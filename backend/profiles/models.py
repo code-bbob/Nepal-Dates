@@ -8,5 +8,7 @@ class Profile(models.Model):
     sex = models.BooleanField()
     age = models.IntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="profiles/images")
     
+class ProfileImages(models.Model):
+    profile = models.ForeignKey(Profile, related_name="images",on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='profiles/images')
